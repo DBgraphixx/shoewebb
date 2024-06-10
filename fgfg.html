@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	
+	<script>
+	
+	var mySlideList1 = ['ts1.jpg', 'ts2.jpg', 'ts3.jpg'];
+ var mySlideShow1 = new SlideShow(mySlideList1, 'slide1', 3000, "mySlideShow1");
+ var mySlideList2 = ['ts1.jpg', 'ts2.jpg', 'ts3.jpg'];
+ var mySlideShow2 = new SlideShow(mySlideList2, 'slide2', 1000, "mySlideShow2");
+*/
+
+function SlideShow(slideList, image, speed, name) {
+
+    this.slideList = slideList;
+    this.image = image;
+    this.speed = speed;
+    this.name = name;
+    this.current = 0;
+    this.timer = 0;
+
+}
+
+SlideShow.prototype.play = SlideShow_play;
+
+function SlideShow_play() {
+
+ if (this.current++ === this.slideList.length - 1) {
+  this.current = 0;
+ }
+ 
+ switchImage(this.image, this.slideList[this.current]);
+ clearTimeout(this.timer);
+ this.timer = setTimeout(this.name + '.play()', this.speed);
+}
+	
+	</script>
+</head>
+	
+
+ <body onLoad="mySlideShow1.play(); mySlideShow2.play();">
+ <img src="ts1.jpg" name="slide1">
+ <img src="ts2.jpg" name="slide2">
+
+ 
+ 
+</body>
+</html>
